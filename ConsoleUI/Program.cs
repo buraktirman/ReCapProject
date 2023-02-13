@@ -24,7 +24,6 @@ namespace ConsoleUI
             }
 
             Color color = new Color { Name = "Pink" };
-            car
         }
     }
 }
