@@ -1,5 +1,5 @@
 ﻿using Business.Concrete;
-using DataAccess.Concrete.InMemory;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 
@@ -9,36 +9,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
-            Console.WriteLine("---------------Initial List---------------");
-            foreach (var car in carManager.GetAll())
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarsByColorId(2))
             {
                 Console.WriteLine(car.Description);
             }
 
-            Car carToDelete = new Car { Id = 5, BrandId = 4, ColorId = 2, ModelYear = "2022", DailyPrice = 6000, Description = "Dacia Sandero" };
-            carManager.Delete(carToDelete);
-
-            Console.WriteLine("---------------After Deletion---------------");
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description);
-            }
-
-            Console.WriteLine("---------------Get By Id---------------");
-            foreach (var item in carManager.GetById(4))
-            {
-                Console.WriteLine(item.Description);
-            }
-
-            Car newCar = new Car() { Id = 6, BrandId = 3, DailyPrice = 7000, ModelYear = "2021", ColorId = 3, Description = "Opel Astra" };
+            Car newCar = new Car { BrandId = 4, ColorId = 5, DailyPrice = 2500, ModelYear = "2023", Description = "Mercedes C180" };
             carManager.Add(newCar);
 
-            Console.WriteLine("---------------After Addition---------------");
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.Description);
             }
+
+            Color color = new Color { Name = "Pink" };
+            car
         }
     }
 }
