@@ -12,6 +12,61 @@ namespace ConsoleUI
             //CarTest();
             //BrandTest();
             //ColorTest();
+            //UserTest();
+            //CustomerTest();
+            //RentalTest();
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var rentalResult1 = rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = new DateTime(2023, 02, 21) });
+
+            if (rentalResult1.Success)
+            {
+                Console.WriteLine(rentalResult1.Message);
+            }
+            else
+            {
+                Console.WriteLine(rentalResult1.Message);
+            }
+
+            Console.WriteLine("---------------------------------------------");
+
+            var rentalResult2 = rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = new DateTime(2023, 02, 25), ReturnDate = new DateTime(2023, 02, 28) });
+
+            if (rentalResult2.Success)
+            {
+                Console.WriteLine(rentalResult2.Message);
+            }
+            else
+            {
+                Console.WriteLine(rentalResult2.Message);
+            }
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            var customerResult1 = customerManager.Add(new Customer { CompanyName = "Vindum LLC", UserId = 1 });
+
+            if (customerResult1.Success)
+            {
+                Console.WriteLine(customerResult1.Message);
+            }
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            var userResult1 = userManager.Add(new User { FirstName = "Burak", LastName = "Tırman", Email = "burak@gmail.com", Password = "123456" });
+            if (userResult1.Success)
+            {
+                Console.WriteLine(userResult1.Message);
+            }
         }
 
         private static void ColorTest()
