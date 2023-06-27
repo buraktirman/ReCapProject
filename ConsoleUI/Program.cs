@@ -133,10 +133,7 @@ namespace ConsoleUI
 
             if (colorResult5.Success)
             {
-                foreach (var color in colorResult5.Data)
-                {
-                    Console.WriteLine(color.Name);
-                }
+                Console.WriteLine(colorResult5.Data.Name); 
                 Console.WriteLine(colorResult5.Message);
             }
             else
@@ -319,10 +316,7 @@ namespace ConsoleUI
 
             if (brandResult5.Success)
             {
-                foreach (var brand in brandResult5.Data)
-                {
-                    Console.WriteLine(brand.Name);
-                }
+                Console.WriteLine(brandResult5.Data.Name);
                 Console.WriteLine(brandResult5.Message);
             }
             else
